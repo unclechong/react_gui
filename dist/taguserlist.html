@@ -1,0 +1,862 @@
+
+<html>
+  <head>
+    <title>
+      
+        
+          SuperEye
+        
+      
+    </title>
+    
+    
+      <link rel="stylesheet" type="text/css" href="/static/assets/font-awesome/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="/static/assets/stylesheets/superset.css" />
+      <link rel="stylesheet" type="text/css" href="/static/appbuilder/css/flags/flags16.css" />
+      <link rel="icon" type="image/png" href="/static/assets/images/favicon.png">
+    
+    
+    
+      
+        
+
+  <script src="/static/assets/dist/css-theme.0.15.4.entry.js"></script>
+
+      
+    
+    
+        <link href="/static/appbuilder/select2/select2.css" rel="stylesheet">
+    
+
+
+
+
+
+    <script src="/static/appbuilder/js/jquery-latest.js"></script>
+
+  </head>
+
+  <body>
+    
+      
+        <header class="top" role="header">
+          
+
+
+<div class="navbar navbar-static-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img
+          width="126" src="/static/assets/images/superset-logo@2x.png"
+          alt="SuperEye"
+        />
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+          
+              
+                  
+                      
+
+
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-cogs"></i>&nbsp;
+            
+            权限<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/users/list/">
+       
+        <i class="fa fa-fw fa-user"></i>&nbsp;
+    
+    用户列表</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/roles/list/">
+       
+        <i class="fa fa-fw fa-group"></i>&nbsp;
+    
+    角色列表</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/userstatschartview/chart/">
+       
+        <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    
+    用户统计</a>
+</li>
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/permissions/list/">
+       
+        <i class="fa fa-fw fa-lock"></i>&nbsp;
+    
+    基本权限</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/viewmenus/list/">
+       
+        <i class="fa fa-fw fa-list-alt"></i>&nbsp;
+    
+    视图/菜单</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/permissionviews/list/">
+       
+        <i class="fa fa-fw fa-link"></i>&nbsp;
+    
+    视图/菜单权限</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/accessrequestsmodelview/list/">
+       
+        <i class="fa fa-fw fa-table"></i>&nbsp;
+    
+    权限请求</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/logmodelview/list/">
+       
+        <i class="fa fa-fw fa-list-ol"></i>&nbsp;
+    
+    操作记录</a>
+</li>
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-wrench"></i>&nbsp;
+            
+            管理<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/supereye/import_dashboards">
+       
+        <i class="fa fa-fw fa-cloud-upload"></i>&nbsp;
+    
+    导入仪表盘</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/queryview/list/">
+       
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+    
+    Queries</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/csstemplatemodelview/list/">
+       
+        <i class="fa fa-fw fa-css3"></i>&nbsp;
+    
+    css模板</a>
+</li>
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-database"></i>&nbsp;
+            
+            数据源<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/databaseview/list/">
+       
+        <i class="fa fa-fw fa-database"></i>&nbsp;
+    
+    数据库</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/tablemodelview/list/">
+       
+        <i class="fa fa-fw fa-table"></i>&nbsp;
+    
+    数据表</a>
+</li>
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/druidclustermodelview/list/">
+       
+        <i class="fa fa-fw fa-cubes"></i>&nbsp;
+    
+    Druid集群</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/druiddatasourcemodelview/list/">
+       
+        <i class="fa fa-fw fa-cube"></i>&nbsp;
+    
+    Druid数据库</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/supereye/refresh_datasources/">
+       
+        <i class="fa fa-fw fa-cog"></i>&nbsp;
+    
+    更新Druid元数据</a>
+</li>
+                    
+                
+            
+                
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <li>
+                
+    <a tabindex="-1" href="/filemanageview/list/">
+       
+        <i class="fa fa-fw fa-file-text"></i>&nbsp;
+    
+    文件管理</a>
+
+            </li>
+        
+    
+
+    
+        
+            <li>
+                
+    <a tabindex="-1" href="/supereye/taggrouplist">
+       
+        <i class="fa fa-fw fa-tag"></i>&nbsp;
+    
+    用户标签</a>
+
+            </li>
+        
+    
+
+                  
+              
+          
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/static/assets/version_info.json" title="Version info">
+            <i class="fa fa-code-fork"></i> &nbsp;
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/airbnb/superset" title="Superset's Github">
+            <i class="fa fa-github"></i> &nbsp;
+          </a>
+        </li>
+        <li>
+          <a href="http://airbnb.io/superset" title="Documentation">
+            <i class="fa fa-book"></i> &nbsp;
+          </a>
+        </li>
+        
+
+
+
+
+
+
+
+    <li class="dropdown">
+      <a
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        title="liang zhi"
+        href="javascript:void(0)"
+      >
+        <i class="fa fa-user"></i>&nbsp;<b class="caret"></b>
+      </a>
+        <ul class="dropdown-menu">
+            <li><a href="/users/userinfo/"><span class="fa fa-fw fa-user"></span>个人中心</a></li>
+            <li><a href="/logout/"><span class="fa fa-fw fa-sign-out"></span>退出</a></li>
+        </ul>
+    </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<style>
+  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    color: #333;
+    text-decoration: none;
+
+    background-color: transparent;
+  }
+</style>
+
+
+  <script type="text/javascript">
+
+            var myNav = $(".nav.navbar-nav li a"),i;
+            for(i=0;i<myNav.length;i++){
+              var links = myNav.eq(i).attr("href"),myURL = document.URL;
+              if(myURL.indexOf(links) != -1) {
+                myNav.eq(i).attr('class','active').parents().addClass("active ");
+              }
+            }
+
+</script>
+        </header>
+      
+    
+
+    
+    <div class="container">
+        <div id="json_data" data-dashboard="{&#34;avg_asset_year&#34;: {&#34;comment&#34;: &#34;\u5e74\u65e5\u5747\u8d44\u4ea7&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 7, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;avg_asset_year&#34;}, &#34;interest_year&#34;: {&#34;comment&#34;: &#34;\u5e74\u606f\u8d39\u6536\u5165&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 20, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;interest_year&#34;}, &#34;asset_debit_scale&#34;: {&#34;comment&#34;: &#34;\u8d44\u4ea7\u8d1f\u503a\u7387&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 3, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;asset_debit_scale&#34;}, &#34;stock_market_rate&#34;: {&#34;comment&#34;: &#34;\u5f53\u65e5\u5e02\u5360\u7387&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 21, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;stock_market_rate&#34;}, &#34;init_date&#34;: {&#34;comment&#34;: &#34;\u65e5\u671f&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;varchar(8)&#34;, &#34;integer_idx&#34;: 0, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;init_date&#34;}, &#34;close_fin_day&#34;: {&#34;comment&#34;: &#34;\u878d\u8d44\u8d1f\u503a&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 8, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;close_fin_day&#34;}, &#34;total_max_quota&#34;: {&#34;comment&#34;: &#34;\u603b\u4fe1\u7528\u989d\u5ea6&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 17, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;total_max_quota&#34;}, &#34;close_stock_day&#34;: {&#34;comment&#34;: &#34;\u8bc1\u5238\u5e02\u503c&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 11, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;close_stock_day&#34;}, &#34;interest_rate_adj_cust_nums&#34;: {&#34;comment&#34;: &#34;\u8c03\u6574\u5229\u7387\u5ba2\u6237\u6570&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 18, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;interest_rate_adj_cust_nums&#34;}, &#34;avg_fin_year&#34;: {&#34;comment&#34;: &#34;\u5e74\u65e5\u5747\u878d\u8d44\u8d1f\u503a&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 9, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;avg_fin_year&#34;}, &#34;effective_fin_slo_cust_nums&#34;: {&#34;comment&#34;: &#34;\u6709\u6548\u4e24\u878d\u5ba2\u6237\u6570&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 14, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;effective_fin_slo_cust_nums&#34;}, &#34;new_fin_slo_cust_nums_year&#34;: {&#34;comment&#34;: &#34;\u672c\u5e74\u65b0\u5f00\u4e24\u878d\u7528\u6237\u6570&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 15, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;new_fin_slo_cust_nums_year&#34;}, &#34;close_asset_day&#34;: {&#34;comment&#34;: &#34;\u603b\u8d44\u4ea7&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 6, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;close_asset_day&#34;}, &#34;close_fund_day&#34;: {&#34;comment&#34;: &#34;\u8d44\u91d1\u4f59\u989d&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 10, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;close_fund_day&#34;}, &#34;branch_name&#34;: {&#34;comment&#34;: &#34;\u5206\u652f\u673a\u6784\u540d\u79f0&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;varchar(20)&#34;, &#34;integer_idx&#34;: 2, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;branch_name&#34;}, &#34;profit_day&#34;: {&#34;comment&#34;: &#34;\u5f53\u65e5\u603b\u6536\u76ca&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 12, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;profit_day&#34;}, &#34;avg_fin_rate&#34;: {&#34;comment&#34;: &#34;\u5e73\u5747\u5229\u7387\u6c34\u5e73&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 19, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;avg_fin_rate&#34;}, &#34;netasset_debit_scale&#34;: {&#34;comment&#34;: &#34;\u878d\u8d44\u8d1f\u503a\u7387&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 4, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;netasset_debit_scale&#34;}, &#34;exchange_amount_year&#34;: {&#34;comment&#34;: &#34;\u672c\u5e74\u4ea4\u6613\u91cf&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 5, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;exchange_amount_year&#34;}, &#34;cancel_fin_slo_cust_nums_year&#34;: {&#34;comment&#34;: &#34;\u672c\u5e74\u6ce8\u9500\u4e24\u878d\u7528\u6237\u6570&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 16, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;cancel_fin_slo_cust_nums_year&#34;}, &#34;branch_no&#34;: {&#34;comment&#34;: &#34;\u5206\u652f\u673a\u6784\u7f16\u53f7&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;varchar(20)&#34;, &#34;integer_idx&#34;: 1, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;branch_no&#34;}, &#34;stock_market_avg_rate&#34;: {&#34;comment&#34;: &#34;\u5e74\u65e5\u5747\u5e02\u5360\u7387&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 22, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;stock_market_avg_rate&#34;}, &#34;cust_nums_n&#34;: {&#34;comment&#34;: &#34;\u666e\u901a\u5ba2\u6237\u6570&#34;, &#34;enum_value&#34;: [], &#34;type_name&#34;: &#34;double&#34;, &#34;integer_idx&#34;: 13, &#34;is_enum_value&#34;: 0, &#34;column_name&#34;: &#34;cust_nums_n&#34;}}">
+        <div id="save_json_data" data-dashboard="{&#34;tag_group_name&#34;: &#34;tbb_income_26&#34;, &#34;tag_group_id&#34;: &#34;252&#34;, &#34;tag_main_data&#34;: &#34;branch_no&#34;, &#34;hbase_tbl_name&#34;: &#34;ct_branch_tags&#34;, &#34;map_tbl_name&#34;: &#34;branch_tags&#34;, &#34;database&#34;: &#34;supereye_tag&#34;, &#34;table&#34;: &#34;tag_branch_basic&#34;, &#34;col_name&#34;: &#34;income&#34;, &#34;par_name&#34;: &#34;part_date=20170419&#34;, &#34;main_data_type&#34;: &#34;varchar(20)&#34;}">
+        <div class="row">
+            <div id="alert-container"></div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title pull-left">标签列表</h4>
+                    <div class="pull-right tag_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control no-right-border form-focus-purple" id="keyword">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary btn-sm" type="button" id="click_search" >搜索</button>
+                            </span>   &nbsp;       
+                            <a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> 查看统计</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div>
+                    <div class="well well-sm well-pagination"></div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">标签名称</th>
+                                    <th class="text-center">显示名称</th>
+                                    <th class="text-center">定义</th>
+                                    <th class="text-center">状态</th>
+                                    <th class="text-center">执行频率</th>
+                                    <th class="text-center">最后修改时间</th>
+                                    <th class="text-center">修改用户</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="renderTbody">
+                            </tbody>
+                        </table>
+                        <div class=" pull-right  ">
+                            <ul id="renderTag" class="pagination pagination-sm pagination-user" style="display:inherit;"></ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group-separator"></div>
+                    <div class=" tag_name">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">标签名称</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <input type="text" id="tagName" class="form-control" placeholder=""> &nbsp;只能由英文、数字、下划线组成，在系统中的唯一性
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">显示名称</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input id="showName" type="text" class="form-control" placeholder=""> &nbsp;<a  href="javascript:void(0);" id="show_infoAlert"><i class="fa fa-info-circle"></i></a> 在app页面中显示的标签名称，具有相对的唯一性
+                                    <!-- Modal 1 -->
+                                    <div class="modal fade" id="modal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">唯一性的判断要求</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <b>1、显示名称</b><br>
+                                                    没有其他有效状态的标签的显示名称一致；但可以与已失效的标签的显示名称重复<br><br>
+                                                    <b>2、标签名称：</b><br>
+                                                    系统中的唯一值<br><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 标签名称
+                            <div class="alert alert-success alert-dismissible col-sm-2 text-center" id="autoAddNameAlert" style="display: none" role="alert">
+                                <strong>标签名称已自动添加!</strong>
+                            </div> -->
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 ">状态</label>
+                            <div class="col-sm-5">
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio1" data-id="1">永久有效
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio1" data-id="-1">失效
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio1" data-id="0" id="price_type">自定义
+                                </label>
+                                <span class="m-data">&nbsp;  
+                                    <select id="create_time">
+                                        <option>创建时间</option>
+                                        <option>当前时间</option>
+                                    </select> ~  
+                                    <select id="later_time">
+                                        <option>1个月后</option>
+                                        <option>3个月后</option>
+                                        <option>6个月后</option>
+                                        <option>永久</option>
+                                        <option>自定义</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 ">执行频率</label>
+                            <div class="col-sm-5">
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio2" data-id="day">每日
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio2" data-id="week">每周
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio2" data-id="month">每月
+                                </label>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group user_dy">
+                            <label class="col-sm-1 control-label ">定义</label>
+                            <span class="user_l_bq_click" id="addDivFlag"><a href="javascript:void(0)" operate="addAndTermEvent"><i class="fa fa-plus"></i> 并且</a></span>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!--按钮-->
+                        <div class="form-group well-sm well">
+                            <label class="col-sm-1 control-label"></label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-primary" operate="submitData">保存</a>&nbsp;&nbsp;&nbsp; <a href="javascript:void(0)" class="btn btn-sm btn-write" operate="cancelSubmitData">取消</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="btn btn-sm btn-primary" operate="submitDataAndClean">保存并继续添加</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- Modal 2 -->
+                        <div class="modal fade" id="modal2">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">提示</h4>
+                                    </div>
+                                    <div class="modal-body" id="showModal2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="refreshTbody">
+        <% for(i = 0; i < cdata.length; i ++) { %>
+            <tr>
+                <td class="text-center" id="<%='tagid'+i %>"><%=cdata[i].id%></td>
+                <td class="text-center" id="<%='tagname'+i %>"><%=cdata[i].tag_name%></td>
+                <td class="text-center" id="<%='tags_name'+i %>"><%=cdata[i].show_user_name%></td>
+                <td class="text-center" id="<%='defind_info'+i %>"><%=cdata[i].defind_info%></td>
+                <td class="text-center" style="display:none" id="<%='defind_config'+i %>"><%=cdata[i].defind_config%></td>
+                <td class="text-center" id="<%='status'+i %>"><%=cdata[i].status%></td>
+                <td class="text-center" id="<%='exec_hz'+i %>"><%=cdata[i].exec_hz%></td>
+                <td class="text-center"><%=cdata[i].last_modify_time%></td>
+                <td class="text-center"><%=cdata[i].modify_user%></td>
+                <td width="204" class="text-center">
+                    <center>
+                        <div class="btn-group btn-group-xs" >
+                            <a href="javascript:void(0)" class="btn btn-sm btn-blue" data-toggle="tooltip" data-id="<%='a_'+i %>" rel="tooltip" title="" data-original-title="编辑记录" operate="edit_onClick"> <i class="fa fa-edit"></i> 编辑 </a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-blue" operate="remove_onClick" name="<%=cdata[i].id%>"> <i class="fa fa-remove"></i> 删除 </a>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+        <% } %>
+    </script> 
+    <script type="text/html" id="initRefreshTag">
+        <li class="" > <a href="javascript:void(0)" operate="li_onClick" data-id="--">&laquo;</a> </li>
+        <li class="" > <a href="javascript:void(0)" operate="li_onClick" data-id="-">&lt;</a> </li>
+        <% for(j = 0; j < cdata; j ++) { 
+           if (j == 0) { %>
+                <li class=""> <a href="javascript:void(0)" id="<%='page_'+(j+1)%>" data-id="<%=j+1%>" operate="li_onClick"><%=j+1%></a> </li>
+            <% }else{ %>
+                <li class=""> <a href="javascript:void(0)" id="<%='page_'+(j+1)%>" data-id="<%=j+1%>" operate="li_onClick"><%=j+1%></a> </li>
+            <% } 
+        } %>
+        <li class="" > <a href="javascript:void(0)" data-id="+" operate="li_onClick">&gt;</a> </li>
+        <li class="" > <a href="javascript:void(0)" data-id="++" operate="li_onClick">&raquo;</a> </li>
+    </script>
+    <script type="text/html" id="renderOrDiv">
+        <div class="user_dy_1 alert">
+            <div class="userdy_right ">
+                <a href="javascript:void(0)" class="user_add user_add_po">或者</a>
+                <select class="form-control" operate="select_click">
+                    <option value="p_chosie">请选择</option>
+                    <% for(var i=0; i< cdata.length-1;i++){ %>
+                        <option value="<%= cdata[i].send_name%>"><%= cdata[i].show_name%></option>
+                    <% } %> 
+                </select>
+                <select class="form-control" operate="select_click_next">
+                    <option value="p_chosie">请选择</option>
+                </select>
+                <span></span>
+                <button type="button" class="close" data-id="<%='close_'+cdata[cdata.length-1].and_div_total%>" operate="delete_alert" data-dismiss="alert">
+                    <span aria-hidden="true" operate="closeThisModal">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <div class="clearfix"></div>
+            </div>
+        </div>  
+    </script>
+    <script type="text/html" id="renderAndDiv">
+        <div class="col-sm-10" data-id="<%='and_'+cdata[cdata.length-1].and_div_total%>" get-div-total="def_div">
+            <div class="user_dy_1 alert" >
+                <div class="userdy_right ">
+                    <select class="form-control" operate="select_click">
+                        <option value="p_chosie">请选择</option>
+                        <% for(var i=0; i< cdata.length-1;i++){ %>
+                            <option value="<%= cdata[i].send_name%>"><%= cdata[i].show_name%></option>
+                        <% } %> 
+                    </select>
+                    <select class="form-control" operate="select_click_next">
+                        <option value="p_chosie">请选择</option>
+                    </select>
+                    <span></span>
+                    <button type="button" class="close" flag="no_flag" data-id="<%='close_'+cdata[cdata.length-1].and_div_total%>" operate="delete_alert" data-dismiss="alert">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button> <div class="clearfix"></div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="user_add" operate="addOrdivEvent" ><i class="fa fa-plus"></i> 或者条件</a>
+            <span class="user_l_bq"><a href="javascript:void(0)" > 并且</a></span>
+        </div>
+    </script>
+    <script type="text/html" id="renderInutAndDiv">
+        <div class="col-sm-10" data-id="<%='and_'+cdata[cdata.length-1].and_div_total%>" get-div-total="def_div">
+            <div class="user_dy_1 alert" data-id="<%='alert_'+cdata[cdata.length-1].and_div_total%>">
+                <div class="userdy_right ">
+                    <select class="form-control" operate="select_click">
+                        <option value="p_chosie">请选择</option>
+                        <% for(var i=0; i< cdata.length-1;i++){ %>
+                            <option value="<%= cdata[i].send_name%>"><%= cdata[i].show_name%></option>
+                        <% } %> 
+                    </select>
+                    <select class="form-control" operate="select_click_next">
+                        <option value="p_chosie">请选择</option>
+                    </select>
+                    <select class="form-control" operate="select_click_next">
+                        <option value="p_chosie">请选择</option>
+                    </select>
+                    <span></span>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="user_add" operate="addOrdivEvent"><i class="fa fa-plus"></i> 或者条件</a>
+        </div>
+    </script>                    
+    <script type="text/html" id="next_span">
+        <% if (cdata[cdata.length-1] == "A") { %>
+            <span operate="last_select_k" data-id="A">
+                <input type="text" get_input_val="d_input_val" /> &nbsp; ~ &nbsp;
+                <input type="text" get_input_val="d_input_val" /> 
+            </span>
+        <% } %>    
+        <% if (cdata[cdata.length-1] == "B") { %>
+            <span>
+                <select class="form-control" operate="last_select_k" data-id="B" is-many-select="is_many_select" multiple>
+                    <% for(var i = 0;i<cdata.length-1;i++){ %>
+                        <option value="<%= cdata[i]%>"><%= cdata[i]%></option>
+                    <% } %>    
+                </select>
+            </span>
+        <% } %>
+        <% if (cdata[cdata.length-1] == "C") { %>
+            <span operate="last_select_k" data-id="C">
+                <input type="text" /> 
+            </span>
+        <% } %> 
+        <% if (cdata[cdata.length-1] == "D") { %>
+            <span>
+            </span>
+        <% } %> 
+    </script>   
+    <script type="text/html" id="editRenderDiv">
+        <% for (var i = 0;i<cdata.defind_config.length;i++) { %>
+            <div class="col-sm-10" data-id="<%='and_'+(i+1) %>" get-div-total="def_div">
+                <% for (var k = 0;k<cdata.defind_config[i].length;k++) { %>
+                    <div class="user_dy_1 alert" data-id="<%='alert_'+(i+1) %>">
+                        <div class="userdy_right ">
+                            <% if (k !=0 ) { %>
+                                <a href="javascript:void(0)" class="user_add user_add_po">或者</a>
+                            <% } %>    
+                            <select class="form-control" operate="select_click">
+                                <option value="p_chosie">请选择</option>
+                                <% for (var val in cdata.obj_data) { %>
+                                    <% if (val ==  cdata.defind_config[i][k].name) { %>
+                                        <option value="<%=val %>" selected = "selected"><%=cdata.obj_data[val].name %></option>
+                                    <% }else{ %>
+                                        <option value="<%=val %>"><%=cdata.obj_data[val].name %></option>
+                                    <% } %>
+                                <% } %> 
+                            </select>
+                            <select class="form-control" operate="select_click_next">
+                                <option value="p_chosie">请选择</option>
+                                <% if (cdata.defind_config[i][k].condition == "1") { %>
+                                    <option value="1" selected = "selected">区间</option>
+                                    <option value="3">包含</option>
+                                <% } %>
+                                <% if (cdata.defind_config[i][k].condition == "3") { %>
+                                    <option value="1">区间</option>
+                                    <option value="3" selected = "selected">包含</option>
+                                <% } %>
+                                <% if (cdata.defind_config[i][k].condition == "2") { %>    
+                                    <option value="2" selected = "selected">等于</option>
+                                <% } %>
+                            </select>
+                            <span>
+                            <% if (cdata.defind_config[i][k].condition == "1") { %>
+                                <span operate="last_select_k" data-id="A">
+                                    <% if (cdata.defind_config[i][k].values[0] == "-1") { %>
+                                        <input type="text" get_input_val="d_input_val" value="" />
+                                    <% }else{ %>  
+                                        <input type="text" get_input_val="d_input_val" value="<%=cdata.defind_config[i][k].values[0] %>" />   
+                                    <% } %> 
+                                    &nbsp; ~ &nbsp;
+                                    <% if (cdata.defind_config[i][k].values[1] == "-1") { %>
+                                        <input type="text" get_input_val="d_input_val" value="" />
+                                    <% }else{ %>  
+                                        <input type="text" get_input_val="d_input_val" value="<%=cdata.defind_config[i][k].values[1] %>" />
+                                    <% } %>        
+                                </span>
+                            <% } %>    
+                            <% if (cdata.defind_config[i][k].condition == "2") { %>
+                                <select class="form-control" operate="last_select_k" data-id="B" is-many-select="is_many_select" multiple>
+                                    <% for (var j = 0;j<cdata.obj_data[cdata.defind_config[i][k].name].list.length;j++) { %>
+                                        <% if(j<cdata.defind_config[i][k].values.length){ %>
+                                            <% if (cdata.obj_data[cdata.defind_config[i][k].name].list.indexOf(cdata.defind_config[i][k].values[j]) != -1 ) { %>
+                                                <option value="<%=cdata.obj_data[cdata.defind_config[i][k].name].list[j] %>" selected = "selected" ><%=cdata.obj_data[cdata.defind_config[i][k].name].list[j] %></option>
+                                            <% }else { %>
+                                                <option value="<%=cdata.obj_data[cdata.defind_config[i][k].name].list[j] %>" ><%=cdata.obj_data[cdata.defind_config[i][k].name].list[j] %></option>
+                                            <% } %>
+                                        <% }else { %>
+                                            <option value="<%=cdata.obj_data[cdata.defind_config[i][k].name].list[j] %>" ><%=cdata.obj_data[cdata.defind_config[i][k].name].list[j] %></option>
+                                        <% } %>
+                                    <% } %> 
+                                </select>
+                            <% } %>
+                            <% if (cdata.defind_config[i][k].condition == "3") { %>
+                                <span operate="last_select_k" data-id="C">
+                                    <input type="text" value="<%=cdata.defind_config[i][k].values %>" /> 
+                                </span>
+                            <% } %> 
+                            </span>
+                            <% if (i + k != 0) { %>
+                                <button type="button" class="close" flag="no_flag" data-id="<%='close_'+(i+1)%>" operate="delete_alert" data-dismiss="alert">
+                                    <span aria-hidden="true">×</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                            <% } %>     
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                <% } %>
+                <a href="javascript:void(0)" class="user_add" operate="addOrdivEvent"><i class="fa fa-plus"></i> 或者条件</a>
+                <% if (i !=0 ) { %>
+                    <span class="user_l_bq"><a href="javascript:void(0)" > 并且</a></span>
+                <% } %>   
+            </div>
+        <% } %>    
+    </script>    
+
+
+    <!-- Modal for misc messages / alerts  -->
+    <div class="misc-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+    
+    
+    
+        
+
+  <script src="/static/assets/dist/taguserlist.0.15.4.entry.js"></script>
+
+    
+
+  </body>
+</html>

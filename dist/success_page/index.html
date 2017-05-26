@@ -1,0 +1,602 @@
+
+<html>
+  <head>
+    <title>
+
+
+          SuperEye
+
+
+    </title>
+
+
+      <link rel="stylesheet" type="text/css" href="./lib/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="./lib/superset.css" />
+      <link rel="stylesheet" type="text/css" href="./lib/flags16.css" />
+      <link rel="icon" type="image/png" href="./lib/favicon.png">
+
+
+
+
+
+
+  <script src="./lib/css-theme.0.15.4.entry.js"></script>
+
+
+
+
+<style>
+    .eventwarn_name .input-group{ display: inline}
+    .eventwarn_name  .bootstrap-select button{ width: 200px}
+    .form-control.eventwarn_input{ width: 120px;}
+</style>
+
+
+
+
+
+
+
+
+    <script src="./lib/jquery-latest.js"></script>
+    <script src='bundle.js'></script>
+  </head>
+
+  <body>
+
+
+        <header class="top" role="header">
+
+
+
+<div class="navbar navbar-static-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img
+          width="126" src="./lib/superset-logo@2x.png"
+          alt="SuperEye"
+        />
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+
+
+
+
+
+
+
+
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+
+                <i class="fa fa-cogs"></i>&nbsp;
+
+            权限<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/users/list/">
+
+        <i class="fa fa-fw fa-user"></i>&nbsp;
+
+    用户列表</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/roles/list/">
+
+        <i class="fa fa-fw fa-group"></i>&nbsp;
+
+    角色列表</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/userstatschartview/chart/">
+
+        <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+
+    用户统计</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/permissions/list/">
+
+        <i class="fa fa-fw fa-lock"></i>&nbsp;
+
+    基本权限</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/viewmenus/list/">
+
+        <i class="fa fa-fw fa-list-alt"></i>&nbsp;
+
+    视图/菜单</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/permissionviews/list/">
+
+        <i class="fa fa-fw fa-link"></i>&nbsp;
+
+    视图/菜单权限</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/accessrequestsmodelview/list/">
+
+        <i class="fa fa-fw fa-table"></i>&nbsp;
+
+    权限请求</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/logmodelview/list/">
+
+        <i class="fa fa-fw fa-list-ol"></i>&nbsp;
+
+    操作记录</a>
+</li>
+
+
+
+            </ul></li>
+
+
+
+
+
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+
+                <i class="fa fa-wrench"></i>&nbsp;
+
+            管理<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/supereye/import_dashboards">
+
+        <i class="fa fa-fw fa-cloud-upload"></i>&nbsp;
+
+    导入仪表盘</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/queryview/list/">
+
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+
+    Queries</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/csstemplatemodelview/list/">
+
+        <i class="fa fa-fw fa-css3"></i>&nbsp;
+
+    css模板</a>
+</li>
+
+
+
+            </ul></li>
+
+
+
+
+
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+
+                <i class="fa fa-database"></i>&nbsp;
+
+            数据源<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/databaseview/list/">
+
+        <i class="fa fa-fw fa-database"></i>&nbsp;
+
+    数据库</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/tablemodelview/list/">
+
+        <i class="fa fa-fw fa-table"></i>&nbsp;
+
+    数据表</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/druidclustermodelview/list/">
+
+        <i class="fa fa-fw fa-cubes"></i>&nbsp;
+
+    Druid集群</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/druiddatasourcemodelview/list/">
+
+        <i class="fa fa-fw fa-cube"></i>&nbsp;
+
+    Druid数据库</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/supereye/refresh_datasources/">
+
+        <i class="fa fa-fw fa-cog"></i>&nbsp;
+
+    更新Druid元数据</a>
+</li>
+
+
+
+
+
+
+
+            </ul></li>
+
+
+
+
+
+            <li>
+
+    <a tabindex="-1" href="/slicemodelview/list/">
+
+        <i class="fa fa-fw fa-bar-chart"></i>&nbsp;
+
+    切片</a>
+
+            </li>
+
+
+
+
+
+            <li>
+
+    <a tabindex="-1" href="/dashboardmodelview/list/">
+
+        <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+
+    仪表盘</a>
+
+            </li>
+
+
+
+
+
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+
+                <i class="fa fa-flask"></i>&nbsp;
+
+            SQL实验室<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/supereye/sqllab">
+
+        <i class="fa fa-fw fa-flask"></i>&nbsp;
+
+    SQL编辑</a>
+</li>
+
+
+
+
+
+
+                        <li>
+    <a tabindex="-1" href="/supereye/sqllab#search">
+
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+
+    Query搜索</a>
+</li>
+
+
+
+            </ul></li>
+
+
+
+
+
+            <li>
+
+    <a tabindex="-1" href="/supereye/quotalab">
+
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+
+    SQL管理</a>
+
+            </li>
+
+
+
+
+
+            <li>
+
+    <a tabindex="-1" href="/filemanageview/list/">
+
+        <i class="fa fa-fw fa-file-text"></i>&nbsp;
+
+    文件管理</a>
+
+            </li>
+
+
+
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/static/assets/version_info.json" title="Version info">
+            <i class="fa fa-code-fork"></i> &nbsp;
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/airbnb/superset" title="Superset's Github">
+            <i class="fa fa-github"></i> &nbsp;
+          </a>
+        </li>
+        <li>
+          <a href="http://airbnb.io/superset" title="Documentation">
+            <i class="fa fa-book"></i> &nbsp;
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+    <li class="dropdown">
+      <a
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        title="liang zhi"
+        href="javascript:void(0)"
+      >
+        <i class="fa fa-user"></i>&nbsp;<b class="caret"></b>
+      </a>
+        <ul class="dropdown-menu">
+            <li><a href="/users/userinfo/"><span class="fa fa-fw fa-user"></span>个人中心</a></li>
+            <li><a href="/logout/"><span class="fa fa-fw fa-sign-out"></span>退出</a></li>
+        </ul>
+    </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<style>
+  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    color: #333;
+    text-decoration: none;
+
+    background-color: transparent;
+  }
+</style>
+
+
+  <script type="text/javascript">
+
+            var myNav = $(".nav.navbar-nav li a"),i;
+            for(i=0;i<myNav.length;i++){
+              var links = myNav.eq(i).attr("href"),myURL = document.URL;
+              if(myURL.indexOf(links) != -1) {
+                myNav.eq(i).attr('class','active').parents().addClass("active ");
+              }
+            }
+
+</script>
+        </header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div id="alert-container">
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title pull-left">异动规则配置</h4>
+                <div class="pull-right tag_search tag_search_set">
+                    <div class="input-group">
+                        <input type="text" class="form-control no-right-border form-focus-purple" placeholder="">
+              <span class="input-group-btn">
+                  <button class="btn btn-primary btn-sm" type="button">搜索</button>
+              </span>   &nbsp;
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <div class="well well-sm well-pagination">
+                </div>
+                <div id="render-container"></div>
+
+                <div class="form-group-separator"></div>
+                <!---->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title pull-left">融资金额</h4>
+                <div class="pull-right tag_search tag_search_set">
+                    <div class="input-group">
+                        <input type="text" class="form-control no-right-border form-focus-purple" placeholder="">
+              <span class="input-group-btn">
+                  <button class="btn btn-primary btn-sm" type="button">搜索</button>
+              </span>   &nbsp;
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <div class="well well-sm well-pagination">
+                </div>
+                <div id="render-container-sec"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="./lib/bootstrap-select.css">
+
+<script src="./lib/bootstrap-select.js"></script>
+
+<script src="./lib/bootstrap.min.js"></script>
+
+
+
+    <!-- Modal for misc messages / alerts  -->
+    <div class="misc-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </body>
+</html>

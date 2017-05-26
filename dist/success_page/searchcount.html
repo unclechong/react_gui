@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      
+        
+          SuperEye
+        
+      
+    </title>
+    
+    
+      <link rel="stylesheet" type="text/css" href="./lib/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="./lib/superset.css" />
+      <link rel="stylesheet" type="text/css" href="./lib/flags16.css" />
+      <link rel="icon" type="image/png" href="./lib/favicon.png">
+    
+    
+
+      
+        
+
+  <script src="./lib/css-theme.0.15.4.entry.js"></script>
+
+      
+    
+
+
+<link href="./lib/daterangepicker.css" rel="stylesheet">
+<script src="./lib/echarts.min.js"></script>
+<!-- <script charset="utf-8" src="/static/assets/javascripts/lib/react/react.min.js"></script>
+<script charset="utf-8" src="/static/assets/javascripts/lib/react/react-dom.min.js"></script> -->
+
+
+
+
+
+
+
+
+    <script src="./lib/jquery-latest.js"></script>
+    <script src="./lib/bootstrap.min.js"></script>
+
+    <script src="./lib/select2.js"></script>
+    <script src='bundle.js'></script>
+  </head>
+
+  <body>
+    
+      
+        <header class="top" role="header">
+          
+
+
+<div class="navbar navbar-static-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img
+          width="126" src="./lib/superset-logo@2x.png"
+          alt="SuperEye"
+        />
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+          
+              
+                  
+
+
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-cogs"></i>&nbsp;
+            
+            权限<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/users/list/">
+       
+        <i class="fa fa-fw fa-user"></i>&nbsp;
+    
+    用户列表</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/roles/list/">
+       
+        <i class="fa fa-fw fa-group"></i>&nbsp;
+    
+    角色列表</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/userstatschartview/chart/">
+       
+        <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    
+    用户统计</a>
+</li>
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/permissions/list/">
+       
+        <i class="fa fa-fw fa-lock"></i>&nbsp;
+    
+    基本权限</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/viewmenus/list/">
+       
+        <i class="fa fa-fw fa-list-alt"></i>&nbsp;
+    
+    视图/菜单</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/permissionviews/list/">
+       
+        <i class="fa fa-fw fa-link"></i>&nbsp;
+    
+    视图/菜单权限</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/accessrequestsmodelview/list/">
+       
+        <i class="fa fa-fw fa-table"></i>&nbsp;
+    
+    权限请求</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/logmodelview/list/">
+       
+        <i class="fa fa-fw fa-list-ol"></i>&nbsp;
+    
+    操作记录</a>
+</li>
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-wrench"></i>&nbsp;
+            
+            管理<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/supereye/import_dashboards">
+       
+        <i class="fa fa-fw fa-cloud-upload"></i>&nbsp;
+    
+    导入仪表盘</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/queryview/list/">
+       
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+    
+    Queries</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/csstemplatemodelview/list/">
+       
+        <i class="fa fa-fw fa-css3"></i>&nbsp;
+    
+    css模板</a>
+</li>
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-database"></i>&nbsp;
+            
+            数据源<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/databaseview/list/">
+       
+        <i class="fa fa-fw fa-database"></i>&nbsp;
+    
+    数据库</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/tablemodelview/list/">
+       
+        <i class="fa fa-fw fa-table"></i>&nbsp;
+    
+    数据表</a>
+</li>
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/druidclustermodelview/list/">
+       
+        <i class="fa fa-fw fa-cubes"></i>&nbsp;
+    
+    Druid集群</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/druiddatasourcemodelview/list/">
+       
+        <i class="fa fa-fw fa-cube"></i>&nbsp;
+    
+    Druid数据库</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/supereye/refresh_datasources/">
+       
+        <i class="fa fa-fw fa-cog"></i>&nbsp;
+    
+    更新Druid元数据</a>
+</li>
+                    
+                
+            
+                
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+        
+            <li>
+                
+    <a tabindex="-1" href="/slicemodelview/list/">
+       
+        <i class="fa fa-fw fa-bar-chart"></i>&nbsp;
+    
+    切片</a>
+
+            </li>
+        
+    
+
+    
+        
+            <li>
+                
+    <a tabindex="-1" href="/dashboardmodelview/list/">
+       
+        <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+    
+    仪表盘</a>
+
+            </li>
+        
+    
+
+    
+        
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+                <i class="fa fa-flask"></i>&nbsp;
+            
+            SQL实验室<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/supereye/sqllab">
+       
+        <i class="fa fa-fw fa-flask"></i>&nbsp;
+    
+    SQL编辑</a>
+</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li>
+    <a tabindex="-1" href="/supereye/sqllab#search">
+       
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+    
+    Query搜索</a>
+</li>
+                    
+                
+            
+            </ul></li>
+        
+    
+
+    
+        
+            <li>
+                
+    <a tabindex="-1" href="/supereye/quotalab">
+       
+        <i class="fa fa-fw fa-search"></i>&nbsp;
+    
+    SQL管理</a>
+
+            </li>
+        
+    
+
+    
+        
+            <li>
+                
+    <a tabindex="-1" href="/filemanageview/list/">
+       
+        <i class="fa fa-fw fa-file-text"></i>&nbsp;
+    
+    文件管理</a>
+
+            </li>
+        
+    
+
+              
+          
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/static/assets/version_info.json" title="Version info">
+            <i class="fa fa-code-fork"></i> &nbsp;
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/airbnb/superset" title="Superset's Github">
+            <i class="fa fa-github"></i> &nbsp;
+          </a>
+        </li>
+        <li>
+          <a href="http://airbnb.io/superset" title="Documentation">
+            <i class="fa fa-book"></i> &nbsp;
+          </a>
+        </li>
+        
+
+
+
+
+
+
+
+    <li class="dropdown">
+      <a
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        title="liang zhi"
+        href="javascript:void(0)"
+      >
+        <i class="fa fa-user"></i>&nbsp;<b class="caret"></b>
+      </a>
+        <ul class="dropdown-menu">
+            <li><a href="/users/userinfo/"><span class="fa fa-fw fa-user"></span>个人中心</a></li>
+            <li><a href="/logout/"><span class="fa fa-fw fa-sign-out"></span>退出</a></li>
+        </ul>
+    </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<style>
+  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    color: #333;
+    text-decoration: none;
+
+    background-color: transparent;
+  }
+</style>
+
+
+  <script type="text/javascript">
+
+            var myNav = $(".nav.navbar-nav li a"),i;
+            for(i=0;i<myNav.length;i++){
+              var links = myNav.eq(i).attr("href"),myURL = document.URL;
+              if(myURL.indexOf(links) != -1) {
+                myNav.eq(i).attr('class','active').parents().addClass("active ");
+              }
+            }
+
+</script>
+        </header>
+      
+    
+
+    
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="panel panel-primary searchcount">
+            <div class="panel-heading">
+                <h4 class="panel-title pull-left">
+                    统计配置</h4>
+
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <div id="render-container"></div>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab-1" data-toggle="tab">标签统计</a>
+                    </li>
+                    <li>
+                        <a href="#tab-2" data-toggle="tab">属性统计</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tab-1">
+<div class="col-sm-12">
+                            <div class="col-sm-12 count_sx">
+
+                                <select class="form-control">
+                                    <option value="选择类型">选择类型</option>
+                                    <option selected="" value="标签组">标签组</option>
+                                    <option value="属性字段">属性字段</option>
+                                </select>
+
+                                <select class="form-control">
+                                    <option selected="" value="融资标签组">融资标签组</option>
+                                    <option value="收入标签组">收入标签组</option>
+                                </select>
+
+                                <div class="input-group date form_date " data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" >
+                                    <input class="form-control " size="16" type="text" value="" placeholder="选择时间">
+                                    <span class="input-group-addon"> <a href="#"><i class="fa fa-calendar"></i></a></span>
+                                </div>
+                                <input type="hidden" id="dtp_input2" value=""/>
+                                <a href="#" class="btn btn-sm btn-primary" >
+                                    确定
+                                </a>
+
+
+                                <!---->
+                                <div class="charts_tb">
+                                <ul class="nav nav-tabs pull-right">
+                                    <li class="active">
+                                        <a href="#charts-1" data-toggle="tab"><img src="./lib/pie.png" alt=""> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#charts-2" data-toggle="tab"><img src="./lib/line.png" alt=""> </a>
+                                    </li>
+
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="charts-1">
+                                        <!---->
+                                        <div id="container" class="count_charts_1"></div>
+                                        <script type="text/javascript">
+                                            var dom = document.getElementById("container");
+                                            var myChart = echarts.init(dom);
+                                            var app = {};
+                                            option = null;
+                                            option = {
+                                                tooltip : {
+                                                    trigger: 'item',
+                                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                                },
+                                                color:['#3593f5','#49cc7d','#ffcc00'],
+                                                legend: {
+                                                    orient: 'vertical',
+                                                    x: 'left',
+                                                    data: ['融资量大','融资量中等','融资量小']
+
+
+                                                },
+                                                series : [
+                                                    {
+                                                        name: '融资量统计',
+                                                        type: 'pie',
+                                                        radius : '55%',
+                                                        center: ['40%', '50%'],
+                                                        data:[
+                                                            {value:335, name:'融资量大'},
+                                                            {value:310, name:'融资量中等'},
+                                                            {value:234, name:'融资量小'},
+
+                                                        ],
+                                                        itemStyle: {
+                                                            emphasis: {
+                                                                shadowBlur: 10,
+                                                                shadowOffsetX: 0,
+                                                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                                            }
+                                                        },
+                                                        itemStyle: {
+                                                            normal: {
+                                                                label:{
+                                                                    show: true,
+//	                            position:'inside',
+                                                                    formatter: '{b} : {c} ({d}%)'
+                                                                }
+                                                            },
+                                                            labelLine :{show:true}
+                                                        }
+                                                    }
+                                                ]
+                                            };;
+                                            if (option && typeof option === "object") {
+                                                myChart.setOption(option, true);
+                                            }
+                                        </script>
+                                        <!---->
+                                    </div>
+                                    <div class="tab-pane " id="charts-2">
+
+                                        <!---->
+                                        <div id="container_1" class="count_charts_1"></div>
+                                        <script type="text/javascript">
+                                            var dom_1 = document.getElementById("container_1");
+                                            var myChart_1 = echarts.init(dom_1);
+                                            var app = {};
+                                            option = null;
+                                            option = {
+                                                title : {
+                                                    text: '融资量统计'
+
+                                                },
+                                                tooltip : {
+                                                    trigger: 'axis'
+                                                },
+                                                color: ['#3593f5', '#49cc7d', '#ffcc00'],
+                                                legend: {
+                                                    data:['融资量大','融资量中等','融资量小']
+                                                },
+                                                toolbox: {
+                                                    show : true
+
+                                                },
+                                                calculable : true,
+                                                xAxis : [
+                                                    {
+                                                        type : 'category',
+                                                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                                                    }
+                                                ],
+                                                yAxis : [
+                                                    {
+                                                        type : 'value'
+                                                    }
+                                                ],
+                                                series : [
+                                                    {
+                                                        name:'融资量大',
+                                                        type:'bar',
+                                                        data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+
+
+                                                    },
+                                                    {
+                                                        name:'融资量中等',
+                                                        type:'bar',
+                                                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+
+
+
+                                                    },
+                                                    {
+                                                        name:'融资量小',
+                                                        type:'bar',
+                                                        data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+
+
+                                                    }
+                                                ]
+                                            };;
+                                            if (option && typeof option === "object") {
+                                                myChart_1.setOption(option, true);
+                                            }
+                                        </script>
+                                        <!---->
+                                    </div>
+
+                                </div>
+                                </div>
+
+                            <!---->
+                            </div>
+</div>
+                        <!--表格-->
+                        <div class="clearfix"></div>
+                        <div class="form-group-separator"></div>
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-12 count_label">
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    全部
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    融资量大
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    融资量中等
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    融资量小
+                                </label>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>用户id</th>
+                                    <th>用户姓名</th>
+                                    <th>column1</th>
+                                    <th>column2</th>
+                                    <th>column3</th>
+                                    <th>column4</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>王大利</td>
+                                    <td>3</td>
+                                    <td>用于描述客资金额大小</td>
+                                    <td>table2</td>
+                                    <td>table2</td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <!---->
+                            <div class="pull-left">总计：<span class="text-red">654</span>人</div>
+                            <div class=" pull-right  ">
+                                <ul class="pagination pagination-sm pagination-user" style="display:inherit;">
+                                    <li class="disabled"> <a href="javascript:void(0)" data-original-title="" title="">&laquo;</a> </li>
+                                    <li class="disabled"> <a href="javascript:void(0)" data-original-title="" title="">&lt;</a> </li>
+                                    <li class="active"> <a href="javascript:void(0)" data-original-title="" title="">1</a> </li>
+                                    <li> <a href="/roles/list/?page_RoleModelView=1" data-original-title="" title="">2</a> </li>
+                                    <li> <a href="/roles/list/?page_RoleModelView=1" data-original-title="" title="">&gt;</a> </li>
+                                    <li class="disabled"> <a href="javascript:void(0)" data-original-title="" title="">&raquo;</a> </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!---->
+
+                        </div>
+<br>
+                        <!--表格-->
+                    </div>
+
+                    <div class="tab-pane" id="tab-2">
+
+                            <div class="col-sm-12">
+
+                                <div class="col-sm-12 count_sx">
+
+                                    <select class="form-control">
+
+                                        <option value="客户负债表">客户负债表</option>
+                                        <option value="客户基本信息表">客户基本信息表</option>
+                                    </select>
+
+                                    <select class="form-control">
+                                        <option selected="" value="融资金额">融资金额</option>
+                                        <option value="年日均资产">年日均资产</option>
+                                    </select>
+
+                                    <div class="input-group date form_date " data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" >
+                                        <input class="form-control " size="16" type="text" value="" placeholder="选择时间">
+                                        <span class="input-group-addon"> <a href="#"><i class="fa fa-calendar"></i></a></span>
+                                    </div>
+                                    <input type="hidden" id="dtp_input2" value=""/>
+                                    <a class="btn btn-sm btn-write" href="javascript:;" onclick="jQuery('#modal1').modal('show', {backdrop: 'fade'});" >
+                                        分段设置
+                                    </a>&nbsp;
+                                    <a href="#" class="btn btn-sm btn-primary" >
+                                        确定
+                                    </a>
+
+
+                                    <!---->
+                                    <div class="charts_tb">
+                                        <ul class="nav nav-tabs pull-right">
+                                            <li class="active">
+                                                <a href="#charts-3" data-toggle="tab"><img src="./lib/pie.png" alt=""> </a>
+                                            </li>
+                                            <li>
+                                                <a href="#charts-4" data-toggle="tab"><img src="./lib/line.png" alt=""> </a>
+                                            </li>
+
+
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="charts-3">
+                                                <!---->
+                                                <div id="container_sx" class=" count_charts_1"></div>
+                                                <script type="text/javascript">
+                                                    var dom_sx = document.getElementById("container_sx");
+                                                    var myChart_sx = echarts.init(dom_sx);
+                                                    var app = {};
+                                                    option = null;
+                                                    option = {
+                                                        tooltip : {
+                                                            trigger: 'item',
+                                                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                                        },
+                                                        color:['#3593f5','#49cc7d','#ffcc00'],
+                                                        legend: {
+                                                            orient: 'vertical',
+                                                            x: 'left',
+                                                            data: ['融资量大','融资量中等','融资量小']
+
+
+                                                        },
+                                                        series : [
+                                                            {
+                                                                name: '融资量统计',
+                                                                type: 'pie',
+                                                                radius : '55%',
+                                                                center: ['40%', '50%'],
+                                                                data:[
+                                                                    {value:335, name:'融资量大'},
+                                                                    {value:310, name:'融资量中等'},
+                                                                    {value:234, name:'融资量小'},
+
+                                                                ],
+                                                                itemStyle: {
+                                                                    emphasis: {
+                                                                        shadowBlur: 10,
+                                                                        shadowOffsetX: 0,
+                                                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                                                    }
+                                                                },
+                                                                itemStyle: {
+                                                                    normal: {
+                                                                        label:{
+                                                                            show: true,
+//	                            position:'inside',
+                                                                            formatter: '{b} : {c} ({d}%)'
+                                                                        }
+                                                                    },
+                                                                    labelLine :{show:true}
+                                                                }
+                                                            }
+                                                        ]
+                                                    };;
+                                                    if (option && typeof option === "object") {
+                                                        myChart_sx.setOption(option, true);
+                                                    }
+                                                </script>
+                                                <!---->
+                                            </div>
+                                            <div class="tab-pane " id="charts-4">
+
+                                                <!---->
+                                                <div id="container_1_sx" class="count_charts_1"></div>
+                                                <script type="text/javascript">
+                                                    var dom_1_sx = document.getElementById("container_1_sx");
+                                                    var myChart_1_sx = echarts.init(dom_1_sx);
+                                                    var app = {};
+                                                    option = null;
+                                                    option = {
+                                                        title : {
+                                                            text: '融资量统计'
+
+                                                        },
+                                                        tooltip : {
+                                                            trigger: 'axis'
+                                                        },
+                                                        color: ['#3593f5', '#49cc7d', '#ffcc00'],
+                                                        legend: {
+                                                            data:['融资量大','融资量中等','融资量小']
+                                                        },
+                                                        toolbox: {
+                                                            show : true
+
+                                                        },
+                                                        calculable : true,
+                                                        xAxis : [
+                                                            {
+                                                                type : 'category',
+                                                                data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                                                            }
+                                                        ],
+                                                        yAxis : [
+                                                            {
+                                                                type : 'value'
+                                                            }
+                                                        ],
+                                                        series : [
+                                                            {
+                                                                name:'融资量大',
+                                                                type:'bar',
+                                                                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+
+
+                                                            },
+                                                            {
+                                                                name:'融资量中等',
+                                                                type:'bar',
+                                                                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+
+
+
+                                                            },
+                                                            {
+                                                                name:'融资量小',
+                                                                type:'bar',
+                                                                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+
+
+                                                            }
+                                                        ]
+                                                    };;
+                                                    if (option && typeof option === "object") {
+                                                        myChart_1_sx.setOption(option, true);
+                                                    }
+                                                </script>
+                                                <!---->
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!---->
+                                </div>
+                            </div>
+
+                        <!--表格-->
+                        <div class="clearfix"></div>
+                        <div class="form-group-separator"></div>
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-12 count_label">
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    全部
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    1000 ~ +∞
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    100 ~ 500万
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="pull-left">&nbsp;
+                                    0 ~ 100万
+                                </label>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>用户id</th>
+                                    <th>用户姓名</th>
+                                    <th>column1</th>
+                                    <th>column2</th>
+                                    <th>column3</th>
+                                    <th>column4</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>王大利</td>
+                                    <td>3</td>
+                                    <td>用于描述客资金额大小</td>
+                                    <td>table2</td>
+                                    <td>table2</td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <!---->
+                            <div class="pull-left">总计：<span class="text-red">654</span>人</div>
+                            <div class=" pull-right  ">
+                                <ul class="pagination pagination-sm pagination-user" style="display:inherit;">
+                                    <li class="disabled"> <a href="javascript:void(0)" data-original-title="" title="">&laquo;</a> </li>
+                                    <li class="disabled"> <a href="javascript:void(0)" data-original-title="" title="">&lt;</a> </li>
+                                    <li class="active"> <a href="javascript:void(0)" data-original-title="" title="">1</a> </li>
+                                    <li> <a href="/roles/list/?page_RoleModelView=1" data-original-title="" title="">2</a> </li>
+                                    <li> <a href="/roles/list/?page_RoleModelView=1" data-original-title="" title="">&gt;</a> </li>
+                                    <li class="disabled"> <a href="javascript:void(0)" data-original-title="" title="">&raquo;</a> </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <!---->
+
+                        </div>
+                        <br>
+                        <!--表格-->
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!---->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">分段设置</h4>
+            </div>
+
+            <div class="modal-body searchmodel_body">
+               <div> <label ><input type="radio" name="1" > 等间隔分段</label>&nbsp;&nbsp;默认分为 <input type="text"> 段</div><br>
+                <div> <label ><input type="radio"  name="1" > 自定义分段</label><br>
+                    <div class="zdy_modle">
+                    <span>区间1 [&nbsp; -∞，<input type="text"> &nbsp;]<br></span>
+                    <span>区间1 [&nbsp; 100，<input type="text"> &nbsp;]<br></span>
+                    <span class="alert">区间1 [ &nbsp;<input type="text"> ，+∞&nbsp;]
+                        <button type="button" class="close" data-id="close_1" operate="delete_alert" data-dismiss="alert">
+                        <span aria-hidden="true" operate="closeThisModal">×</span>
+                        <span class="sr-only">Close</span>
+                    </button><br></span>
+                    </div>
+                    <a href="javascript:void(0)"><i class="fa fa-plus"></i> 增加区间</a>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button> <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- Modal 1 -->
+
+
+
+
+
+
+    <!-- Modal for misc messages / alerts  -->
+    <div class="misc-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+        
+
+
+
+    
+
+  </body>
+</html>
