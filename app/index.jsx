@@ -165,12 +165,16 @@ export class Example extends React.Component{
 }
 
 export class NewExample extends React.Component{
-	constructor(props){
-		super(props);
+	// constructor(props){
+	// 	super(props);
+	//
+	// 	this.state={
+	// 		changeTable:false
+	// 	};
+	// }
 
-		this.state={
-			changeTable:false
-		};
+	state = {
+		changeTable:false
 	}
 
 	returnTest(){
@@ -193,12 +197,17 @@ export class NewExample extends React.Component{
 		});
 	}
 
+	test=(e)=>{
+		console.log(e);
+	}
+
 	render(){
 		let obj = {name:"zhang",age:"99"}
 		let testArr = [];
 		for (let o in obj){
 			testArr.push(<h3 key={o}>{`${o} : ${obj[o]} `}</h3>)
 		}
+		this.test('33')
 
 		return(
 			<div>
