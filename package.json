@@ -37,12 +37,15 @@
   "dependencies": {
     "antd": "^2.9.3",
     "antd-init": "^2.0.4",
+    "babel-preset-es2105": "0.0.0",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.23.1",
     "jquery": "^3.2.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
     "prop-types": "^15.5.8",
     "react-bootstrap-select": "^0.14.0",
+    "style-loader": "^0.13.2",
     "underscore": "^1.8.3"
   },
   "description": ""

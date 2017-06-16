@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jQuery'
-
+import './css/index.css'
 
 import _ from 'underscore';
 import { Select , Form , Input , Button , Cascader , Col , Row , notification } from 'antd';
