@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery'
 import {Button, Icon, Select, Tooltip, message} from 'antd';
 import _ from 'underscore';
+import $ from 'jquery';
 import ConsoleComponent from './component/ConsoleComponent.jsx'
 import ZoomCharts from './component/ZoomCharts.jsx'
 import NetUtil from './component/NetUtil.jsx'
@@ -20,6 +20,9 @@ class ShowInfoComponent extends Component {
         this.choise_id = null;
         this.coreEntityTypeId = null;
         //展示右边信息的state
+        this.one_entityLib = [];
+        this.entityLib = [];
+        this.NOT_entityLib = [];
 
         this.state = {
             isDouble:false,
@@ -31,20 +34,23 @@ class ShowInfoComponent extends Component {
             backParamContainer:[]
         }
     }
-
+//25829
+//36297
+//24718 铁路客运
+//28123   一层是数据较多
     componentDidMount(){
         let _this = this;
-        NetUtil.get(`/relation/getRelation`,{entityIds: '64496'},respData=>{
-            _this.choise_id = '64496';
+        NetUtil.get(`/relation/getRelation`,{entityIds: '28123'},respData=>{
+            _this.choise_id = '28123';
             _this.coreEntityTypeId = respData.entityList[0].entityTypeId;
-            let {all_nodes,links,relationTypeList,entityTypeList,categoryList} = this.formatJson(respData,'64496');
+            let {all_nodes,links,relationTypeList,entityTypeList,categoryList} = this.formatJson(respData,'28123');
             _this.respData = respData;
             let obj = {
                 title:respData.entityList[0].entityName,
                 content:respData.entityList[0].entityArributeList
             }
             _this.setState({
-                zoomcharts:<ZoomCharts netData={{nodes:all_nodes,links}} focusNodes={['64496']}  onClick={_this.chartsOnClick.bind(_this)} onDoubleClick={_this.chartsOnDoubleClick.bind(_this)}/>,
+                zoomcharts:<ZoomCharts netData={{nodes:all_nodes,links}} focusNodes={['28123']}  onClick={_this.chartsOnClick.bind(_this)} onDoubleClick={_this.chartsOnDoubleClick.bind(_this)}/>,
                 relationTypeList,
                 entityTypeList,
                 categoryList,
@@ -72,6 +78,12 @@ class ShowInfoComponent extends Component {
         for(let i=0;i<relationList.length;i++){
             //一层数据时，默认显示，需要做部分
             if (relationList[i].entityId1 == _id || relationList[i].entityId2 == _id) {
+                if (this.one_entityLib.indexOf(relationList[i].entityId1)<0) {
+                    this.one_entityLib.push(relationList[i].entityId1);
+                }
+                if (this.one_entityLib.indexOf(relationList[i].entityId2)<0) {
+                    this.one_entityLib.push(relationList[i].entityId2);
+                }
                 links.push({
                     id:relationList[i].id,
                     from:relationList[i].entityId1,
@@ -105,7 +117,12 @@ class ShowInfoComponent extends Component {
                     relationTypeList.push({id:relationList[i].relationTypeId,relationTypeName:relationList[i].relationTypeName});
                 }
             }
-
+            if (this.entityLib.indexOf(relationList[i].entityId1)<0) {
+                this.entityLib.push(relationList[i].entityId1);
+            }
+            if (this.entityLib.indexOf(relationList[i].entityId2)<0) {
+                this.entityLib.push(relationList[i].entityId2);
+            }
             //全部数据，在渲染第二层时需要,不需要过滤，啊吧所有数据渲染进来
             //可以在all_nodes 里面添加信息，在单击的时候取出数据展示在右边窗口
             if (all_nodeIds.indexOf(relationList[i].entityId1) < 0) {
@@ -162,117 +179,189 @@ class ShowInfoComponent extends Component {
         // 2. 如果在筛选主体类型时，把核心主体去掉，则应手动添加一个核心主体的ID
         // 3. 再画出关系，如果关系两边对应的主体的都在entityLib中存在则画出该条关系
         // 4. 在画关系时，如果之前添加过主体的ID则要判断下部选择的关系中是否选中如果没有选中则不画出
-            let entityLib = [];
-            for (let k=0;k<data.length;k++ ){
-                if (val.indexOf(data[k].entityTypeId1)>=0) {
-                    if (entityLib.indexOf(data[k].entityId1)<0) {
-                        entityLib.push(data[k].entityId1);
-                    }
-                }
-                if (val.indexOf(data[k].entityTypeId2)>=0) {
-                    if (entityLib.indexOf(data[k].entityId2)<0) {
-                        entityLib.push(data[k].entityId2);
-                    }
-                }
-            }
-            let isAddChoise_id = false;
-            if (entityLib.indexOf(Number(this.choise_id)) < 0) {
-                isAddChoise_id = true;
-                entityLib.push(Number(this.choise_id));
-            }
-            let getRelationVal = this.refs.console.state.relationVal;
-            let active_relationTypeVal = [];
-            //是否是2层状态
-            if (this.state.isDouble) {
-                for(let i=0;i<data.length;i++ ){
-                    if (entityLib.indexOf(data[i].entityId1) >=0 && entityLib.indexOf(data[i].entityId2)>=0 ) {
-                        // if (isAddChoise_id) {
-                        //     if (getRelationVal.length == 0) {
-                        //         links.push({
-                        //             id:data[i].id,
-                        //             from:data[i].entityId1,
-                        //             to:data[i].entityId2,
-                        //             type:data[i].relationTypeId,
-                        //             style:{ "fromDecoration":"arrow"}
-                        //         })
-                        //         if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
-                        //             active_relationTypeVal.push(data[i].relationTypeId)
-                        //         }
-                        //     }else {
-                        //         if (getRelationVal.indexOf(data[i].relationTypeId) >=0) {
-                        //             links.push({
-                        //                 id:data[i].id,
-                        //                 from:data[i].entityId1,
-                        //                 to:data[i].entityId2,
-                        //                 type:data[i].relationTypeId,
-                        //                 style:{ "fromDecoration":"arrow"}
-                        //             })
-                        //             if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
-                        //                 active_relationTypeVal.push(data[i].relationTypeId)
-                        //             }
-                        //         }
-                        //     }
-                        // }else {
-                            links.push({
-                                id:data[i].id,
-                                from:data[i].entityId1,
-                                to:data[i].entityId2,
-                                type:data[i].relationTypeId,
-                                style:{ "fromDecoration":"arrow"}
-                            })
-                            if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
-                                active_relationTypeVal.push(data[i].relationTypeId)
-                            }
-                        // }
-                    }
-                }
-            }else {
-                for(let i=0;i<data.length;i++ ){
-                    //先找到跟核心主体有关系的实体， 在进行下一步的筛选！！！
-                    if (data[i].entityId1 == this.choise_id || data[i].entityId2 == this.choise_id) {
-                        if (entityLib.indexOf(data[i].entityId1) >=0 && entityLib.indexOf(data[i].entityId2)>=0 ) {
-                            links.push({
-                                id:data[i].id,
-                                from:data[i].entityId1,
-                                to:data[i].entityId2,
-                                type:data[i].relationTypeId,
-                                style:{ "fromDecoration":"arrow"}
-                            })
-                            if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
-                                active_relationTypeVal.push(data[i].relationTypeId)
-                            }
-                        }
-                        // if (entityLib.indexOf(data[i].entityId1) >=0 && entityLib.indexOf(data[i].entityId2)>=0 ) {
-
-
-
-                        //
-                        //     if (isAddChoise_id) {
-                        //         if (getRelationVal.indexOf(data[i].relationTypeId) >=0) {
-                        //             links.push({
-                        //                 id:data[i].id,
-                        //                 from:data[i].entityId1,
-                        //                 to:data[i].entityId2,
-                        //                 type:data[i].relationTypeId,
-                        //                 style:{ "fromDecoration":"arrow"}
-                        //             })
-                        //             if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
-                        //                 active_relationTypeVal.push(data[i].relationTypeId)
-                        //             }
-                        //         }
-                        //     }else {
-                        //         links.push({
-                        //             id:data[i].id,
-                        //             from:data[i].entityId1,
-                        //             to:data[i].entityId2,
-                        //             type:data[i].relationTypeId,
-                        //             style:{ "fromDecoration":"arrow"}
-                        //         })
-                        //         if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
-                        //             active_relationTypeVal.push(data[i].relationTypeId)
-                        //         }
-                        //     }
-                        // }
+            // let entityLib = [];        // 控制台选中筛选后的实体
+            // let NOT_entityLib = []       // 未被选中的实体
+            // entityLib.push(Number(this.choise_id));       //先把核心实体添加进去
+            // //是否是2层状态
+            // if (this.state.isDouble) {
+            //
+            // }else {
+            //     console.log(this.one_entityLib);
+            //     for (let k=0;k<data.length;k++ ){
+            //         if (data[k].entityId1 == this.choise_id || data[k].entityId2 == this.choise_id) {
+            //             if (this.one_entityLib.indexOf(data[i].entityId1) >=0 && this.one_entityLib.indexOf(data[i].entityId2)>=0 ) {
+            //         }
+            //     }
+            // }
+            //     for (let k=0;k<data.length;k++ ){
+            //         if (val.indexOf(data[k].entityTypeId1)>=0) {
+            //             if (entityLib.indexOf(data[k].entityId1)<0) {
+            //                 entityLib.push(data[k].entityId1);
+            //             }
+            //         }else {
+            //             if (NOT_entityLib.indexOf(data[k].entityId1)<0) {
+            //                 NOT_entityLib.push(data[k].entityId1);
+            //             }
+            //         }
+            //         if (val.indexOf(data[k].entityTypeId2)>=0) {
+            //             if (entityLib.indexOf(data[k].entityId2)<0) {
+            //                 entityLib.push(data[k].entityId2);
+            //             }
+            //         }else {
+            //             if (NOT_entityLib.indexOf(data[k].entityId2)<0) {
+            //                 NOT_entityLib.push(data[k].entityId2);
+            //             }
+            //         }
+            //     }
+            //     //如果剔除的实体中含有核心实体，则手动剔除核心主体，因为核心主体始终存在
+            //     if (NOT_entityLib.indexOf(this.choise_id) >=0 ) {
+            //         let choise_id_index = NOT_entityLib.indexOf(this.choise_id);
+            //         NOT_entityLib.splice(choise_id_index,1);
+            //     }
+            // }else {
+            //     for (let k=0;k<data.length;k++ ){
+            //         if (data[k].entityId1 == this.choise_id || data[k].entityId2 == this.choise_id) {
+            //             if (val.indexOf(data[k].entityTypeId1)>=0) {
+            //                 if (entityLib.indexOf(data[k].entityId1)<0) {
+            //                     entityLib.push(data[k].entityId1);
+            //                 }
+            //             }else {
+            //                 if (NOT_entityLib.indexOf(data[k].entityId1)<0) {
+            //                     NOT_entityLib.push(data[k].entityId1);
+            //                 }
+            //             }
+            //             if (val.indexOf(data[k].entityTypeId2)>=0) {
+            //                 if (entityLib.indexOf(data[k].entityId2)<0) {
+            //                     entityLib.push(data[k].entityId2);
+            //                 }
+            //             }else {
+            //                 if (NOT_entityLib.indexOf(data[k].entityId2)<0) {
+            //                     NOT_entityLib.push(data[k].entityId2);
+            //                 }
+            //             }
+            //         }
+            //     }
+            //     //如果剔除的实体中含有核心实体，则手动剔除核心主体，因为核心主体始终存在
+            //     if (NOT_entityLib.indexOf(Number(this.choise_id)) >=0 ) {
+            //         let choise_id_index = NOT_entityLib.indexOf(Number(this.choise_id));
+            //         NOT_entityLib.splice(choise_id_index,1);
+            //     }
+            // }
+            // console.log(entityLib);
+            // console.log(NOT_entityLib);
+            // entityLib.for
+            // for(let i=0;i<entityLib.length;i++ ){
+            //     if (entityLib.indexOf(data[i].entityId1) >=0 && entityLib.indexOf(data[i].entityId2)>=0 ) {
+            //
+            //     }
+            // }
+            // let isAddChoise_id = false;
+            // if (entityLib.indexOf(Number(this.choise_id)) < 0) {
+            //     isAddChoise_id = true;
+            //     entityLib.push(Number(this.choise_id));
+            // }
+            // let getRelationVal = this.refs.console.state.relationVal;
+            // let active_relationTypeVal = [];
+            // //是否是2层状态
+            // if (this.state.isDouble) {
+                // for(let i=0;i<data.length;i++ ){
+                //     if (entityLib.indexOf(data[i].entityId1) >=0 && entityLib.indexOf(data[i].entityId2)>=0 ) {
+            //             if (isAddChoise_id) {
+            //                 if (getRelationVal.length == 0) {
+            //                     links.push({
+            //                         id:data[i].id,
+            //                         from:data[i].entityId1,
+            //                         to:data[i].entityId2,
+            //                         type:data[i].relationTypeId,
+            //                         style:{ "fromDecoration":"arrow"}
+            //                     })
+            //                     if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                         active_relationTypeVal.push(data[i].relationTypeId)
+            //                     }
+            //                 }else {
+            //                     if (getRelationVal.indexOf(data[i].relationTypeId) >=0) {
+            //                         links.push({
+            //                             id:data[i].id,
+            //                             from:data[i].entityId1,
+            //                             to:data[i].entityId2,
+            //                             type:data[i].relationTypeId,
+            //                             style:{ "fromDecoration":"arrow"}
+            //                         })
+            //                         if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                             active_relationTypeVal.push(data[i].relationTypeId)
+            //                         }
+            //                     }
+            //                 }
+            //                 // if (data[i].entityId1 != this.choise_id && data[i].entityId2 != this.choise_id) {
+            //                 //     links.push({
+            //                 //         id:data[i].id,
+            //                 //         from:data[i].entityId1,
+            //                 //         to:data[i].entityId2,
+            //                 //         type:data[i].relationTypeId,
+            //                 //         style:{ "fromDecoration":"arrow"}
+            //                 //     })
+            //                 //     if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                 //         active_relationTypeVal.push(data[i].relationTypeId)
+            //                 //     }
+            //                 // }
+            //             }else {
+            //                 links.push({
+            //                     id:data[i].id,
+            //                     from:data[i].entityId1,
+            //                     to:data[i].entityId2,
+            //                     type:data[i].relationTypeId,
+            //                     style:{ "fromDecoration":"arrow"}
+            //                 })
+            //                 if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                     active_relationTypeVal.push(data[i].relationTypeId)
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }else {
+            //     for(let i=0;i<data.length;i++ ){
+            //         //先找到跟核心主体有关系的实体， 在进行下一步的筛选！！！
+            //         if (data[i].entityId1 == this.choise_id || data[i].entityId2 == this.choise_id) {
+            //             if (entityLib.indexOf(data[i].entityId1) >=0 && entityLib.indexOf(data[i].entityId2)>=0 ) {
+            //                 if (isAddChoise_id) {
+            //                     if (getRelationVal.length == 0) {
+            //                         links.push({
+            //                             id:data[i].id,
+            //                             from:data[i].entityId1,
+            //                             to:data[i].entityId2,
+            //                             type:data[i].relationTypeId,
+            //                             style:{ "fromDecoration":"arrow"}
+            //                         })
+            //                         if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                             active_relationTypeVal.push(data[i].relationTypeId)
+            //                         }
+            //                     }else {
+            //                         if (getRelationVal.indexOf(data[i].relationTypeId) >=0) {
+            //                             links.push({
+            //                                 id:data[i].id,
+            //                                 from:data[i].entityId1,
+            //                                 to:data[i].entityId2,
+            //                                 type:data[i].relationTypeId,
+            //                                 style:{ "fromDecoration":"arrow"}
+            //                             })
+            //                             if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                                 active_relationTypeVal.push(data[i].relationTypeId)
+            //                             }
+            //                         }
+            //                     }
+            //                 }else {
+            //                     links.push({
+            //                         id:data[i].id,
+            //                         from:data[i].entityId1,
+            //                         to:data[i].entityId2,
+            //                         type:data[i].relationTypeId,
+            //                         style:{ "fromDecoration":"arrow"}
+            //                     })
+            //                     if (active_relationTypeVal.indexOf(data[i].relationTypeId) < 0) {
+            //                         active_relationTypeVal.push(data[i].relationTypeId)
+            //                     }
+            //                 }
+            //             }
                         // if (val.indexOf(data[i].entityTypeId1) >= 0 || val.indexOf(data[i].entityTypeId2) >= 0 ) {
                         //     if (val.indexOf(this.coreEntityTypeId) >= 0) {
                         //         let _index = val.indexOf(this.coreEntityTypeId);
@@ -315,12 +404,12 @@ class ShowInfoComponent extends Component {
                         //         }
                         //     }
                         // }
-                    }
-                }
-            }
+                //     }
+                // }
+            // }
             //，  节点--关系上下联动
             // console.log(active_relationTypeVal);
-            this.refs.console.setCheckboxVal('relation',active_relationTypeVal);
+            // this.refs.console.setCheckboxVal('relation',active_relationTypeVal);
         }else if (type == 'relation') {
             let active_entityTypeVal = [];
             for(let i=0;i<data.length;i++ ){
@@ -363,9 +452,9 @@ class ShowInfoComponent extends Component {
             this.refs.console.setCheckboxVal('entity',active_entityTypeVal);
         }
         let chose_dataSource = {nodes:this.dataSource.all_nodes,links};
-        this.setState({
-            zoomcharts:<ZoomCharts netData={chose_dataSource} focusNodes={[this.choise_id]}  onClick={this.chartsOnClick.bind(this)} onDoubleClick={this.chartsOnDoubleClick.bind(this)}/>,
-        });
+        // this.setState({
+        //     zoomcharts:<ZoomCharts netData={chose_dataSource} focusNodes={[this.choise_id]}  onClick={this.chartsOnClick.bind(this)} onDoubleClick={this.chartsOnDoubleClick.bind(this)}/>,
+        // });
     }
 
     //选择层次，支持2层
