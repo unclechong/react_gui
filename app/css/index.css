@@ -1,3 +1,45 @@
-body{
-    background-color: #eee
+.page-middle-content{
+    position: relative;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    background: #eee;
+    margin-left: 10px;
+    width: 61.8%
+}
+.page-right-content{
+    float: right;
+    width: 15%;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    margin-right: 20px;
+}
+.page-right-content-title{
+    border-radius: 5px 5px 0 0;
+    background: #4178be;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px
+}
+.container-title{
+    background: #eee;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+}
+.page-middle-content-son{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 97px;
+    width: 142px;
+    background: #ffffff;
+    padding: 15px 22px 10px;
+    border-radius: 5px;
+    color: #666;
+    font-weight: bold;
 }

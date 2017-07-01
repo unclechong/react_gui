@@ -79,87 +79,149 @@ function getNewTreeData(treeData, curKey, child, level) {
     setLeaf(treeData, curKey, level);
 }
 
-class Demo extends React.Component {
-    state = {
-        treeData: []
-    }
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                treeData: [
-                    {
-                        name: 'pNode 01',
-                        key: '0-0'
-                    }, {
-                        name: 'pNode 02',
-                        key: '0-1'
-                    }, {
-                        name: 'pNode 03',
-                        key: '0-2'
-                    }
-                ]
-            });
-        }, 100);
-    }
-    onSelect = (info) => {
-        console.log('selected', info);
-    }
-    onLoadData = (treeNode) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                const treeData = [...this.state.treeData];
-                getNewTreeData(treeData, treeNode.props.eventKey, generateTreeNodes(treeNode), 2);
-                this.setState({treeData});
-                resolve();
-            }, 1000);
-        });
-    }
+import { Table, Input, Icon, Button, Popconfirm } from 'antd';
 
-    test = () =>{
-        function test1(time)  {
-            return new Promise((resolve) =>{
-                console.log(1111);
-                setTimeout(function(){
-                    console.log(222);
-                    resolve();
-                },time)
-            })
-        }
-        let test2 =  new Promise((resolve) =>{
-            setTimeout(function(){
-                resolve();
-            },2000)
-        })
-        test1(1000).then(()=>{
-            return test1(2000);
-        }).then(()=>{
-            console.log('in 2');
-        })
+class EditableCell extends React.Component {
+  state = {
+    value: this.props.value,
+    editable: false,
+  }
+  handleChange = (e) => {
+    const value = e.target.value;
+    this.setState({ value });
+  }
+  check = () => {
+    this.setState({ editable: false });
+    if (this.props.onChange) {
+      this.props.onChange(this.state.value);
     }
-
-    render() {
-        const loop = data => data.map((item) => {
-            if (item.children) {
-                return <TreeNode title={item.name} key={item.key}>{loop(item.children)}</TreeNode>;
-            }
-            return <TreeNode title={item.name} key={item.key} isLeaf={item.isLeaf} disabled={item.key === '0-0-0'}/>;
-        });
-        const treeNodes = loop(this.state.treeData);
-        return (
-            <div>
-                <Tree onSelect={this.onSelect} loadData={this.onLoadData}>
-                    {treeNodes}
-                </Tree>
-                <a onClick={this.test}>ssssssssssssss</a>
+  }
+  edit = () => {
+    this.setState({ editable: true });
+  }
+  render() {
+    const { value, editable } = this.state;
+    return (
+      <div className="editable-cell">
+        {
+          editable ?
+            <div className="editable-cell-input-wrapper">
+              <Input
+                value={value}
+                onChange={this.handleChange}
+                onPressEnter={this.check}
+              />
+              <Icon
+                type="check"
+                className="editable-cell-icon-check"
+                onClick={this.check}
+              />
             </div>
-
-        );
-    }
+            :
+            <div className="editable-cell-text-wrapper">
+              {value || ' '}
+              <Icon
+                type="edit"
+                className="editable-cell-icon"
+                onClick={this.edit}
+              />
+            </div>
+        }
+      </div>
+    );
+  }
 }
+
+class EditableTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.columns = [{
+      title: 'name',
+      dataIndex: 'name',
+      width: '30%',
+      render: (text, record, index) => (
+        <EditableCell
+          value={text}
+          onChange={this.onCellChange(index, 'name')}
+        />
+      ),
+    }, {
+      title: 'age',
+      dataIndex: 'age',
+    }, {
+      title: 'address',
+      dataIndex: 'address',
+    }, {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (text, record, index) => {
+        return (
+          this.state.dataSource.length > 1 ?
+          (
+            <Popconfirm title="Sure to delete?" onConfirm={() => this.onDelete(index)}>
+              <a href="#">Delete</a>
+            </Popconfirm>
+          ) : null
+        );
+      },
+    }];
+
+    this.state = {
+      dataSource: [{
+        key: '0',
+        name: 'Edward King 0',
+        age: '32',
+        address: 'London, Park Lane no. 0',
+      }, {
+        key: '1',
+        name: 'Edward King 1',
+        age: '32',
+        address: 'London, Park Lane no. 1',
+      }],
+      count: 2,
+    };
+  }
+  onCellChange = (index, key) => {
+    return (value) => {
+      const dataSource = [...this.state.dataSource];
+      dataSource[index][key] = value;
+      this.setState({ dataSource });
+    };
+  }
+  onDelete = (index) => {
+    const dataSource = [...this.state.dataSource];
+    dataSource.splice(index, 1);
+    this.setState({ dataSource });
+  }
+  handleAdd = () => {
+    const { count, dataSource } = this.state;
+    const newData = {
+      key: count,
+      name: `Edward King ${count}`,
+      age: 32,
+      address: `London, Park Lane no. ${count}`,
+    };
+    this.setState({
+      dataSource: [...dataSource, newData],
+      count: count + 1,
+    });
+  }
+  render() {
+    const { dataSource } = this.state;
+    const columns = this.columns;
+    return (
+      <div>
+        <Button className="editable-add-btn" onClick={this.handleAdd}>Add</Button>
+        <Table bordered dataSource={dataSource} columns={columns} />
+      </div>
+    );
+  }
+}
+
 
 function initComponentA() {
     ReactDOM.render(
-        <Demo/>, document.getElementById("container"));
+        <EditableTable/>, document.getElementById("container"));
 }
 
 $(document).ready(function() {

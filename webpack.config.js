@@ -4,7 +4,7 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app'); //__dirname 中的src目录，以此类推
 module.exports = {
     // entry: './app/index.jsx',
-    entry: './app/antdTest.jsx',
+    entry: './app/mapping.jsx',
 
     output: {
         // path:"./dist",
