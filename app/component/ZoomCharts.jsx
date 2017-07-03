@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+require('../../lib/zoomcharts.js')
 const localization_zh = {
     closeButton: "关闭",
     dataRequestFailed: "请求数据失败",
@@ -39,72 +40,75 @@ const localization_zh = {
 }
 export default class ZoomCharts extends Component {
 
+    constructor(props){
+        super(props);
+
+        // this.flag = n0;
+    }
+
     graphClick(event) {
         event.preventDefault();
         if (event.clickNode) {
             if (this.props.onClick) {
-                this.props.onClick(event.clickNode.data);
+                this.props.onClick(event.clickNode.data)
             }
         }
     }
 
     doubleClick(event) {
+        let _this = this;
         event.preventDefault();
         if (event.clickNode) {
             if (this.props.onDoubleClick) {
-                this.props.onDoubleClick(event.clickNode.data);
+                this.props.onDoubleClick(event.clickNode.data)
             }
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.netData);
-        this.netchart.replaceSettings({
-            navigation: {
-                focusNodeExpansionRadius: nextProps.expansionRadius,
-                initialNodes: nextProps.focusNodes
-            }
-        });
-        this.netchart.replaceData(nextProps.netData);
-        this.netchart.paintNow(true);
-    }
-
-    componentDidMount() {
-        let DOM = this.refs.container;
-        let _this = this;
-        _this.netchart = new NetChart({
-            container: DOM,
-            area: {
-                height: 600
-            },
-            style: {
-                nodeDetailMinSize: 10,
-                selection: {
-                    fillColor: "#9aabeb",
-                    sizeProportional: .3
+        if (nextProps.replaceFlag != this.props.replaceFlag) {
+            let DOM = this.refs.container;
+            let _this = this;
+            _this.netchart = new NetChart({
+                container: DOM,
+                area: {
+                    height: 600
                 },
-                nodeSelected: {
-                    radius: 50
+                style: {
+                    nodeDetailMinSize: 10,
+                    selection: {
+                        fillColor: "#9aabeb",
+                        sizeProportional: .3
+                    },
+                    nodeSelected: {
+                        radius: 50
+                    },
                 },
-            },
-            assetsUrlBase: "/static/assets/tianxin/js/lib/assets/",
-            // data: { url: "https://zoomcharts.com/dvsl/data/net-chart/company-network-small.json?nodes=6378" },
-            data: {
-                preloaded: _this.props.netData
-            },
-            navigation: {
-                mode: "focusnodes",
-                focusNodeExpansionRadius: _this.props.expansionRadius || 1,
-                numberOfFocusNodes: _this.props.focusNodesNum || 1,
-                initialNodes: _this.props.focusNodes || [],
-                expandOnClick: false
-            },
-            events: {
-                onClick: _this.graphClick.bind(this),
-                onDoubleClick: _this.doubleClick.bind(this),
-            },
-            localization:localization_zh,
-        });
+                nodeMenu:{
+                    enabled:false,
+                },
+                toolbar:{
+                    zoomOut:false,
+                    fullscreen:false,
+                    back:false,
+                },
+                assetsUrlBase: "/static/assets/tianxin/js/lib/assets/",
+                data: {
+                    preloaded: nextProps.netData
+                },
+                navigation: {
+                    mode: "focusnodes",
+                    numberOfFocusNodes: _this.props.focusNodesNum || 1,
+                    initialNodes: nextProps.focusNodes || [],
+                    expandOnClick: false
+                },
+                events: {
+                    onClick: _this.graphClick.bind(this),
+                    onDoubleClick: _this.doubleClick.bind(this),
+                },
+                localization:localization_zh,
+            });
+        }
     }
 
     render() {
