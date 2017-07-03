@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-require('../../static/zoomcharts.js')
 const localization_zh = {
     closeButton: "关闭",
     dataRequestFailed: "请求数据失败",
