@@ -201,7 +201,16 @@ export class NewExample extends React.Component{
 		console.log(e);
 	}
 
+	componentWillMount(){
+		console.log(1111);
+	}
+
+	componentDidMount(){
+		console.log(333);
+	}
+
 	render(){
+		console.log(222);
 		let obj = {name:"zhang",age:"99"}
 		let testArr = [];
 		for (let o in obj){
