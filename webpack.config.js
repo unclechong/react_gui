@@ -4,7 +4,7 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app'); //__dirname 中的src目录，以此类推
 module.exports = {
     // entry: './app/index.jsx',
-    entry: './app/asynTree.jsx',
+    entry: './app/scrollTest.jsx',
 
     output: {
         // path:"./dist",
@@ -40,11 +40,12 @@ module.exports = {
                 loader: 'style-loader!css-loader'
     		},
             {
-                test: /\.less$/, loader: 'style-loader!css-loader!less-loader'
+                test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader'
             },
 	        {
 	            test: /\.(jpg|png)$/,
-	            loader: 'url?limit=25000'
+	            loader: 'url?limit=8192'
 	        }
   		],
 
