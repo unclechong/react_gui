@@ -99,6 +99,7 @@ export default class Calendar extends React.Component {
      * @param s_day
      */
     selectDate(s_day) {
+        console.log(s_day);
         let { select_year, select_month} = this.state;
         this.setState({
             history_year : select_year,

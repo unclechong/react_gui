@@ -119,8 +119,10 @@ a {
 .content-row>.item-tag>a {
     position: relative;
 }
-
-.content-row>.item-tag>a:after{
+.content-row>.item-activeitem-tag{
+    position: relative;
+}
+.content-row>.item-tag>a:after,.content-row>.item-activeitem-tag>a:after{
     content: '';
     width: 8px;
     height: 8px;
@@ -154,6 +156,11 @@ a {
 }
 
 .content-row>.item-active>a {
+    background-color: #31a0c6;
+    color: #fff;
+    border-radius: 50%;
+}
+.content-row>.item-activeitem-tag>a{
     background-color: #31a0c6;
     color: #fff;
     border-radius: 50%;

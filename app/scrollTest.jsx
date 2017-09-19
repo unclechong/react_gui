@@ -64,16 +64,28 @@ class Demo extends React.Component {
 
 class CalendarTest extends React.Component {
 
+    nextMonth(){
+
+    }
+
+    selectDate(){
+
+    }
+
+    previousMonth(){
+
+    }
+
     render(){
         return(
             <Calendar
-                // onSelectDate={this.selectDate}
-                // onPreviousMonth={this.previousMonth}
-                // onNextMonth={this.nextMonth}
-                year="2016"
+                onSelectDate={this.selectDate.bind(this)}
+                onPreviousMonth={this.previousMonth.bind(this)}
+                onNextMonth={this.nextMonth.bind(this)}
+                year="2017"
                 month="8"
                 day="7"
-                tags={[5, 21]} />
+                tags={[5]} />
         )
     }
 }
